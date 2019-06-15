@@ -1,0 +1,19 @@
+CREATE TABLE auth (
+    email varchar(255) NOT NULL,
+    password varchar(32) NOT NULL,
+    PRIMARY KEY (email)
+    );
+
+CREATE TABLE user (
+    email varchar(255) NOT NULL,
+    name varchar(32) NOT NULL,
+    PRIMARY KEY (email),
+    FOREIGN KEY (email) REFERENCES auth(email)
+    );
+
+CREATE TABLE token (
+    token varchar(255) NOT NULL,
+    email varchar(255) NOT NULL,
+    PRIMARY KEY (token),
+    FOREIGN KEY (email) REFERENCES auth(email)
+    );
